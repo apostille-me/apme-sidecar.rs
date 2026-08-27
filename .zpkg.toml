@@ -1,0 +1,28 @@
+[package]
+org = "apostille-me"
+name = "apme-sidecar"
+version = "0.1.0"
+description = "k8s sidecar for Apostille Me."
+license = "MIT"
+keywords = ["sidecar", "observability", "k8s"]
+language = "rust"
+
+[package.repository]
+vcs = "git"
+url = "https://github.com/apostille-me/apme-sidecar.rs"
+
+[dependencies]
+"ores-otel/ores-otel-sidecar" = "^0.1.0"
+
+[build]
+command = "cargo build --release --locked --bin apme-sidecar"
+outputs = ["target/release/apme-sidecar"]
+
+[bin]
+apme-sidecar = "target/release/apme-sidecar"
+
+[install]
+adapter = "none"
+
+[scripts]
+test = "cargo test --all-targets --locked"
